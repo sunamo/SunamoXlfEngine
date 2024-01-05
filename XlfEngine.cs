@@ -1,14 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using sunamo.Essential;
-
-using SunamoCode;
-
-using XliffParser;
+namespace SunamoXlfEngine;
 
 /// <summary>
 /// Manage multilanguage strings in *.xlf files
@@ -334,7 +324,7 @@ public class XlfEngine : ConstsManager
                 ClipboardHelper.SetText(pascal);
             }
 
-            ThisApp.SetStatus(TypeOfMessage.Information, "Already " + pascal + " contained");
+            ThisApp.Info( "Already " + pascal + " contained");
             return true;
         }
         return false;

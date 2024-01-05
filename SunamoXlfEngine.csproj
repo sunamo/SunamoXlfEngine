@@ -3,17 +3,17 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoXliffParser" Version="1.0.0" />
+    <Content Remove="C:\Users\r\.nuget\packages\sunamoxlf\23.12.9.1\contentFiles\any\net8.0\WinSec\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj">
-    </ProjectReference>
+    <PackageReference Include="SunamoXliffParser" Version="24.1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SunamoCode\SunamoCode.csproj" />
     <ProjectReference Include="..\SunamoCSharp\SunamoCSharp.csproj" />
-    <ProjectReference Include="..\SunamoXlf\SunamoXlf.csproj" />
+    <PackageReference Include="SunamoXlf" Version="24.1.5.3" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj" />
-  </ItemGroup>
+  <ItemGroup></ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
   </PropertyGroup>
