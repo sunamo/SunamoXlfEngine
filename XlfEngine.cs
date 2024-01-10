@@ -1,3 +1,24 @@
+using SunamoClipboard;
+using SunamoCollections;
+using SunamoCollectionsChangeContent;
+using SunamoCollectionsChangeContent.Args;
+using SunamoCollectionsGeneric.Collections;
+using SunamoCollectionWithoutDuplicates;
+using SunamoConverters.Converts;
+using SunamoDevCode.CodeGenerator;
+using SunamoDevCode.Enums;
+using SunamoDevCode.FileFormats;
+using SunamoDevCode.Helpers;
+using SunamoEnums.Enums;
+using SunamoFileIO;
+using SunamoFileSystem;
+using SunamoLang;
+using SunamoPlatformUwpInterop.AppData;
+using SunamoThisApp;
+using SunamoValues;
+using SunamoValues.Values;
+using SunamoXlf;
+
 namespace SunamoXlfEngine;
 
 /// <summary>
@@ -253,7 +274,7 @@ public class XlfEngine : ConstsManager
 #endif
  XmlLocalisationInterchangeFileFormat.GetIds(path);
 
-        CA.ChangeContent(null, allids.Item1, d2 => "public const string " + d2 + " = \"" + d2 + "\";");
+        CAChangeContent.ChangeContent0(null, allids.Item1, d2 => "public const string " + d2 + " = \"" + d2 + "\";");
 
         CSharpHelper.ReplaceForConsts(XlfEngine.Instance.pathXlfKeys);
 
@@ -277,8 +298,8 @@ public class XlfEngine : ConstsManager
 
         var both = CA.CompareList(b2, allids.Item1);
 
-        CA.ChangeContent(null, allids.Item1, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
-        CA.ChangeContent(new ChangeContentArgs { removeNull = true }, b2, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
+        CAChangeContent.ChangeContent0(null, allids.Item1, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
+        CAChangeContent.ChangeContent0(new ChangeContentArgs2 { removeNull = true }, b2, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
 
         CSharpParser.RemoveConsts(XlfEngine.Instance.pathXlfKeys, b2);
 
@@ -324,14 +345,14 @@ public class XlfEngine : ConstsManager
                 ClipboardHelper.SetText(pascal);
             }
 
-            ThisApp.Info( "Already " + pascal + " contained");
+            ThisApp.Info("Already " + pascal + " contained");
             return true;
         }
         return false;
     }
 
     /// <summary>
-    /// Must be in XlfEngine coz use XlfDocument which is not imported in SunamoCode
+    /// Must be in XlfEngine coz use XlfDocument which is not imported in SunamoDevCode
     /// </summary>
     /// <param name="from"></param>
     /// <param name="to"></param>
