@@ -1,21 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>24.1.10.1</Version>
+    <Version>24.1.24.1</Version>
     <Description>Working with consts, enums and translation files</Description>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="C:\Users\r\.nuget\packages\sunamoxlf\23.12.9.1\contentFiles\any\net8.0\WinSec\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoDevCode" Version="24.1.10.1" />
-    <PackageReference Include="SunamoXliffParser" Version="24.1.11.1" />
+    <PackageReference Include="SunamoDevCode" Version="24.1.14.1" />
   </ItemGroup>
   <ItemGroup>
-    
-    <PackageReference Include="SunamoXlf" Version="24.1.10.1" />
+    <PackageReference Include="SunamoXlf" Version="24.1.14.1" />
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
   </PropertyGroup>

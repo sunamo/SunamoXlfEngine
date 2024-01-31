@@ -1,24 +1,3 @@
-using SunamoClipboard;
-using SunamoCollections;
-using SunamoCollectionsChangeContent;
-using SunamoCollectionsChangeContent.Args;
-using SunamoCollectionsGeneric.Collections;
-using SunamoCollectionWithoutDuplicates;
-using SunamoConverters.Converts;
-using SunamoDevCode.CodeGenerator;
-using SunamoDevCode.Enums;
-using SunamoDevCode.FileFormats;
-using SunamoDevCode.Helpers;
-using SunamoEnums.Enums;
-using SunamoFileIO;
-using SunamoFileSystem;
-using SunamoLang;
-using SunamoPlatformUwpInterop.AppData;
-using SunamoThisApp;
-using SunamoValues;
-using SunamoValues.Values;
-using SunamoXlf;
-
 namespace SunamoXlfEngine;
 
 /// <summary>
@@ -250,7 +229,7 @@ public class XlfEngine : ConstsManager
             }
         }
 
-        XlfEngine.Instance.AddConsts(toAdd);
+        await XlfEngine.Instance.AddConsts(toAdd);
     }
 
     public const string d = "YouCameToThisPageBecauseYouTriedToLoadThePageOrToPerformAnotherOperationThatYouDoNotHavePermissionToDoOrThatIsNotApplicableInThisContext";
@@ -276,7 +255,7 @@ public class XlfEngine : ConstsManager
 
         CAChangeContent.ChangeContent0(null, allids.Item1, d2 => "public const string " + d2 + " = \"" + d2 + "\";");
 
-        CSharpHelper.ReplaceForConsts(XlfEngine.Instance.pathXlfKeys);
+        await CSharpHelper.ReplaceForConsts(XlfEngine.Instance.pathXlfKeys);
 
 
         var consts =
@@ -299,9 +278,9 @@ public class XlfEngine : ConstsManager
         var both = CA.CompareList(b2, allids.Item1);
 
         CAChangeContent.ChangeContent0(null, allids.Item1, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
-        CAChangeContent.ChangeContent0(new ChangeContentArgs2 { removeNull = true }, b2, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
+        CAChangeContent.ChangeContent0(new ChangeContentArgs { removeNull = true }, b2, d4 => XmlLocalisationInterchangeFileFormatSunamo.GetConstsFromLine(d4));
 
-        CSharpParser.RemoveConsts(XlfEngine.Instance.pathXlfKeys, b2);
+        await CSharpParser.RemoveConsts(XlfEngine.Instance.pathXlfKeys, b2);
 
         AddKeysConsts(allids.Item1, first, b);
     }
