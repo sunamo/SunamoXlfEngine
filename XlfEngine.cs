@@ -1,4 +1,9 @@
+
 namespace SunamoXlfEngine;
+using SunamoCollectionWithoutDuplicates;
+using SunamoDevCode.FileFormats;
+using SunamoLang;
+
 
 /// <summary>
 /// Manage multilanguage strings in *.xlf files
@@ -60,7 +65,7 @@ public class XlfEngine : ConstsManager
 #if ASYNC
         await
 #endif
-        TF.WriteAllText(DefaultPaths.KeysXlf, content);
+        File.WriteAllTextAsync(DefaultPaths.KeysXlf, content);
 
 
         //ClipboardHelper.SetText(content);
@@ -143,8 +148,8 @@ public class XlfEngine : ConstsManager
     {
         Dictionary<Langs, string> filesWithTranslation = new Dictionary<Langs, string>();
         #region Load strings from MultilingualResources file
-        var path = FS.Combine(basePathXlf, "MultilingualResources\\");
-        var files = FS.GetFiles(path, "*.xlf", System.IO.SearchOption.TopDirectoryOnly);
+        var path = Path.Combine(basePathXlf, "MultilingualResources\\");
+        var files = Directory.GetFiles(path, "*.xlf", System.IO.SearchOption.TopDirectoryOnly);
         foreach (var item in files)
         {
             if (item.Contains("min"))
